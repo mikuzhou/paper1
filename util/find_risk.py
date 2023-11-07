@@ -14,11 +14,9 @@ def codeAnalyzer(code):
         model="gpt-3.5-turbo-16k",
         temperature=0,
     )
-    system_template = """You are a code analyzer. Your task is to count the number of resources in the given Python code."""
+    system_template = """You are a code analyzer. Your task is to output only the number of potential resources contention as a single integer with no additional text or explanation. The given code is {code}."""
     system_message_prompt = SystemMessagePromptTemplate.from_template(system_template)
-    human_template = """Please analyze the following Python code and count the number of resources: 
-
-{code}"""
+    human_template = """Please output only the number of potential resources contention as a single integer with no additional text or explanation. The given code is {code}."""
     human_message_prompt = HumanMessagePromptTemplate.from_template(human_template)
     chat_prompt = ChatPromptTemplate.from_messages(
         [system_message_prompt, human_message_prompt]

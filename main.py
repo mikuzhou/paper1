@@ -15,7 +15,7 @@ def find_fancywithdistractor(dlock_num, risk_num, distractor_num):
     find_dlock = util.find_deathlock.deadlockAnalyzer(code)
     find_risk = util.find_risk.codeAnalyzer(code)
     need_tobewritten = (util.score.cal_score(dlock_num, risk_num, find_dlock, find_risk), dlock_num, risk_num, distractor_num)
-    util.write_to_csv(file_name1, need_tobewritten)
+    util.write_tocsv.write_to_csv(file_name1, need_tobewritten)
     return util.score.cal_score(dlock_num, risk_num, find_dlock, find_risk);
 
 def find_withoutdistractor(dlock_num, risk_num, distractor_num):
@@ -24,7 +24,7 @@ def find_withoutdistractor(dlock_num, risk_num, distractor_num):
     find_dlock = util.find_deathlock.deadlockAnalyzer(code)
     find_risk = util.find_risk.codeAnalyzer(code)
     need_tobewritten = (util.score.cal_score(dlock_num, risk_num, find_dlock, find_risk), dlock_num, risk_num, distractor_num)
-    util.write_to_csv(file_name1, need_tobewritten)
+    util.write_tocsv.write_to_csv(file_name1, need_tobewritten)
     return util.score.cal_score(dlock_num, risk_num, find_dlock, find_risk);
 
 
@@ -34,7 +34,7 @@ def find_withdistractor(dlock_num, risk_num, distractor_num):
     find_dlock = util.find_deathlock.deadlockAnalyzer(code)
     find_risk = util.find_risk.codeAnalyzer(code)
     need_tobewritten = (util.score.cal_score(dlock_num, risk_num, find_dlock, find_risk), dlock_num, risk_num, distractor_num)
-    util.write_to_csv(file_name1, need_tobewritten)
+    util.write_tocsv.write_to_csv(file_name1, need_tobewritten)
     return util.score.cal_score(dlock_num, risk_num, find_dlock, find_risk);
 
 def main():
@@ -50,13 +50,13 @@ def main():
         print(i)
         random_bytes = os.urandom(4)  # 生成4个随机字节
         random_int = int.from_bytes(random_bytes, 'big')  # 将字节转换为一个整数
-        dlock_num = random_int % 21
+        dlock_num = random_int % 11
         random_bytes = os.urandom(4)  # 生成4个随机字节
         random_int = int.from_bytes(random_bytes, 'big')  # 将字节转换为一个整数
-        risk_num = random_int % 21
+        risk_num = random_int % 11
         random_bytes = os.urandom(4)  # 生成4个随机字节
         random_int = int.from_bytes(random_bytes, 'big')  # 将字节转换为一个整数
-        distractor_num = random_int % 21
+        distractor_num = random_int % 11
         fancy = find_fancywithdistractor(dlock_num, risk_num, distractor_num)
         withC = find_withdistractor(dlock_num, risk_num, distractor_num)
         without = find_withoutdistractor(dlock_num, risk_num, distractor_num)

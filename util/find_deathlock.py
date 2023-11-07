@@ -14,9 +14,9 @@ def deadlockAnalyzer(code):
         model="gpt-3.5-turbo-16k",
         temperature=0,
     )
-    system_template = """You are a code analyzer. Your task is to generate a code that can output the number of deadlock occurrences in the given Python code. The code should be enclosed in {code} tags."""
+    system_template = """You are a code analyzer. Your task is to output only the number of deadlocks as a single integer with no additional text or explanation. The given code is {code}."""
     system_message_prompt = SystemMessagePromptTemplate.from_template(system_template)
-    human_template = """Please write a code that can analyze the given Python code and output the number of deadlock occurrences. Enclose your code in {code} tags."""
+    human_template = """Please output only the number of deadlocks as a single integer with no additional text or explanation. The given code is {code}."""
     human_message_prompt = HumanMessagePromptTemplate.from_template(human_template)
     chat_prompt = ChatPromptTemplate.from_messages(
         [system_message_prompt, human_message_prompt]
@@ -24,6 +24,7 @@ def deadlockAnalyzer(code):
 
     chain = LLMChain(llm=chat, prompt=chat_prompt)
     result = chain.run(code=code)
+    print(result)
     return int(result) # returns string
 #
 # st.title("Deadlock Analyzer")
