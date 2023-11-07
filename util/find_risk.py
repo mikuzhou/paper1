@@ -24,6 +24,7 @@ def codeAnalyzer(code):
 
     chain = LLMChain(llm=chat, prompt=chat_prompt)
     result = chain.run(code=code)
+    print(result)
     return int(result) # returns string
 #
 # st.title("Code Analyzer")
