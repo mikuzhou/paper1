@@ -12,7 +12,7 @@ from langchain.docstore.document import Document
 def deadlockAnalyzer(code):
     chat = ChatOpenAI(
         model="gpt-3.5-turbo-16k",
-        temperature=0
+        temperature=0,
     )
     system_template = """You are a code analyzer. Your task is to generate a code that can output the number of deadlock occurrences in the given Python code. The code should be enclosed in {code} tags."""
     system_message_prompt = SystemMessagePromptTemplate.from_template(system_template)

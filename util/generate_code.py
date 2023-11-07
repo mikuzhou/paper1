@@ -12,7 +12,7 @@ from langchain.docstore.document import Document
 def codeGenerator(deadlock_amount,resource_contention_amount,non_contentious_resources_amount):
     chat = ChatOpenAI(
         model="gpt-3.5-turbo-16k",
-        temperature=0
+        temperature=0,
     )
     system_template = """You are a code generator. Your task is to add {deadlock_amount} instances of deadlock, {resource_contention_amount} instances of 2-thread resource contention, and {non_contentious_resources_amount} instances of non-contentious resources to a multiple-threading Python code with five threads."""
     system_message_prompt = SystemMessagePromptTemplate.from_template(system_template)
