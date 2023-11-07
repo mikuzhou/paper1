@@ -6,7 +6,6 @@ import util.generate_code
 import util.write_tocsv
 import util.fancy_code
 import argparse
-import openai
 
 
 def find_fancywithdistractor():
@@ -53,31 +52,31 @@ def find_withdistractor():
     return util.score.cal_score(dlock_num, risk_num, find_dlock, find_risk);
 
 def main():
-    # parser = argparse.ArgumentParser(description="Run specified phases of the grading process.")
-    # parser.add_argument('--api_key', default=None,
-    #                     help="your api_key")
-    # args = parser.parse_args()
-    # if args.api_key:
-    #     openai_api_key = args.api_key
-    # file_name1 = "with.csv"
-    # file_name2 = "without.csv"
-    # file_name3 = "fancy.csv"
-    # i = 0
-    # while i<10:
-    #     need_tobewritten = (i,find_withdistractor())
-    #     util.write_to_csv(file_name1, need_tobewritten)
-    #     i+=1
-    # i = 0
-    # while i<10:
-    #     need_tobewritten = (i,find_withoutdistractor())
-    #     util.write_to_csv(file_name2, need_tobewritten)
-    #     i+=1
-    # i = 0
-    # while i<10:
-    #     need_tobewritten = (i,find_withoutdistractor())
-    #     util.write_to_csv(file_name3, need_tobewritten)
-    #     i+=1
-    print(util.fancy_code.pythonCodeGenerator(2,3,4))
+    parser = argparse.ArgumentParser(description="Run specified phases of the grading process.")
+    parser.add_argument('--api_key', default=None,
+                        help="your api_key")
+    args = parser.parse_args()
+    if args.api_key:
+        openai_api_key = args.api_key
+    file_name1 = "with.csv"
+    file_name2 = "without.csv"
+    file_name3 = "fancy.csv"
+    i = 0
+    while i<10:
+        need_tobewritten = (i,find_withdistractor())
+        util.write_to_csv(file_name1, need_tobewritten)
+        i+=1
+    i = 0
+    while i<10:
+        need_tobewritten = (i,find_withoutdistractor())
+        util.write_to_csv(file_name2, need_tobewritten)
+        i+=1
+    i = 0
+    while i<10:
+        need_tobewritten = (i,find_withoutdistractor())
+        util.write_to_csv(file_name3, need_tobewritten)
+        i+=1
+    # print(util.fancy_code.pythonCodeGenerator(2,3,4))
 
 
 if __name__ == '__main__':
