@@ -20,7 +20,9 @@ To use this testing framework, follow these simple steps:
    
 2. Navigate to the cloned directory.
 
-3. Execute `main.py`:
+3. add your openai_api into environment variable
+
+4. Execute `main.py`:
    ```shell
    python main.py
    ```
