@@ -57,9 +57,7 @@ def main():
         random_bytes = os.urandom(4)  # 生成4个随机字节
         random_int = int.from_bytes(random_bytes, 'big')  # 将字节转换为一个整数
         risk_num = random_int % 11
-        random_bytes = os.urandom(4)  # 生成4个随机字节
-        random_int = int.from_bytes(random_bytes, 'big')  # 将字节转换为一个整数
-        distractor_num = random_int % 11
+        distractor_num = 3
         fancy_data.append(find_fancywithdistractor(dlock_num, risk_num, distractor_num))
         with_data.append(find_withdistractor(dlock_num, risk_num, distractor_num))
         without_data.append(find_withoutdistractor(dlock_num, risk_num, distractor_num))
